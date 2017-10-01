@@ -1,6 +1,6 @@
 # CAE: CloudApp Engine
 
-CAP(Cloud App Protocol)协议客户端引擎，该库使用纯 JavaScript 实现。
+CAP(Cloud App Protocol) 协议客户端引擎，该库使用纯 JavaScript 实现。
 
 ### 安装
 
