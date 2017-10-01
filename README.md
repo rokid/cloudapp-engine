@@ -10,7 +10,7 @@ $ npm install @rokid/cloudapp-engine --save
 
 ## 如何开始
 
-CAE 是我们 CloudApp Protocol 的 JavaScript 实现，理论上来说，可以直接使用在任何可以运行`JavaScript`的环境内，包括 Node.js 及浏览器环境。
+CAE 是我们 CloudApp Protocol 的 JavaScript 实现，理论上来说，可以直接使用在任何可以运行 JavaScript 的环境内，包括 Node.js 及浏览器环境。
 
 下面是一个简单的例子：
 
