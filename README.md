@@ -2,7 +2,7 @@
 
 | Dependency | Build |
 |------------|-------|
-||[![Dependency Status][david-image]][david-url]|[![Build Status][travis-image]][travis-url]|
+|[![Dependency Status][david-image]][david-url]|[![Build Status][travis-image]][travis-url]|
 
 [travis-image]: https://img.shields.io/travis/Rokid/cloudapp-engine.svg?style=flat-square
 [travis-url]: https://travis-ci.org/Rokid/cloudapp-engine
