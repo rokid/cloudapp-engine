@@ -2,11 +2,11 @@
 
 const CloudAppEngine = require('./').CloudAppEngine;
 const client = new CloudAppEngine({
-  host            : 'apigwrest-dev.open.rokid.com',
-  key             : '**************',
-  device_type_id  : '**************',
-  device_id       : '**************',
-  secret          : '**************',
+  host            : process.env.EVENT_REQUEST_HOST,
+  key             : process.env.ROKID_KEY,
+  secret          : process.env.ROKID_SECRET,
+  device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
+  device_id       : process.env.ROKID_DEVICE_ID,
 });
 
 client.on('exit', () => {

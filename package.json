@@ -4,7 +4,8 @@
   "description": "Rokid's CloudApp Engine which implements CloudApp Protocol",
   "main": "index.js",
   "scripts": {
-    "test": "ava tests"
+    "test": "ava tests",
+    "client": "node ./client.js"
   },
   "repository": {
     "type": "git",
