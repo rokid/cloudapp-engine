@@ -3,7 +3,7 @@ sudo: false
 language: node_js
 node_js:
   - "6.9.4"
-  - "latest"
+  - "8.5.0"
 install:
   - npm install
 script:
