@@ -57,7 +57,7 @@ CloudApp Engine 的编程接口非常简单明了，通过 `eval()` 方法向客
 `voice.stop`、`media.play`、`media.stop` 等事件去控制本地设备端的状态，用户无需介入任何内部状态的管理，
 因此，对于用户来说，每个接口都具有幂等性。
 
-#### 类 `CloudAppEngine`
+### 类 `CloudAppEngine`
 
 创建一个 CloudApp 协议的本地客户端，接受如下参数：
 
@@ -68,13 +68,13 @@ CloudApp Engine 的编程接口非常简单明了，通过 `eval()` 方法向客
   - `config.device_type_id` {String} 设备配置项，请在 Rokid 控制台查看；
   - `config.device_id` {String} 设备配置项，请在 Rokid 控制台查看；
 
-##### 方法 `.eval(data)`
+### 方法 `.eval(data)`
 
 用于执行一次数据解析，并且该方法会生成下面的事件。
 
 - `data` {Object} 从 CloudApp 服务端传来的数据
 
-##### 事件 `voice.play`
+### 事件 `voice.play`
 
 表示 TTS 播放的事件。
 
@@ -85,14 +85,14 @@ CloudApp Engine 的编程接口非常简单明了，通过 `eval()` 方法向客
   - `err` {Error|String} 错误，失败是传入；
   - `instance` {Object} 向`CloudAppEngine`内部传入一个`voice`对象，该对象会在`voice.stop`返回；
 
-##### 事件 `voice.stop`
+### 事件 `voice.stop`
 
 表示 TTS 停止的事件。
 
 - `instance` {Object} 通过 `voice.play` 中的 `finish()` 传入的对象；
 - `finish` {Function} 如果 TTS 的停止操作是一个异步调用，需要调用 `finish()` 表示完成；
 
-##### 事件 `media.play`
+### 事件 `media.play`
 
 表示媒体（音乐、视频）播放的事件。
 
@@ -103,21 +103,21 @@ CloudApp Engine 的编程接口非常简单明了，通过 `eval()` 方法向客
   - `err` {Error|String} 错误，失败是传入；
   - `instance` {Object} 向`CloudAppEngine`内部传入一个`media`对象，该对象会在其他事件返回；
 
-##### 事件 `media.stop`
+### 事件 `media.stop`
 
 表示媒体（音乐、视频）停止播放的事件。
 
 - `instance` {Object} 通过 `media.play` 中的 `finish()` 传入的对象；
 - `finish` {Function} 同 `voice.stop` 事件;
 
-##### 事件 `media.pause`
+### 事件 `media.pause`
 
 表示媒体（音乐、视频）暂停播放的事件。
 
 - `instance` {Object} 通过 `media.play` 中的 `finish()` 传入的对象；
 - `finish` {Function} 同 `voice.stop` 事件;
 
-##### 事件 `media.resume`
+### 事件 `media.resume`
 
 表示媒体（音乐、视频）恢复播放的事件。
 
