@@ -1,0 +1,10 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+  - "6.9.4"
+  - "latest"
+install:
+  - npm install
+script:
+  - npm test
