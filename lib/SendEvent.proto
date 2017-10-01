@@ -1,0 +1,12 @@
+syntax = "proto2";
+package proto;
+
+message SendEventRequest {
+  required string appId = 1;
+  required string event = 2;
+  required string extra = 3;
+}
+
+message SendEventResponse {
+  required string response = 1;
+}

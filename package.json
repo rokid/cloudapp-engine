@@ -1,0 +1,27 @@
+{
+  "name": "@rokid/cloudapp-engine",
+  "version": "0.1.0",
+  "description": "Rokid's CloudApp Engine which implements CAP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Rokid/cloudapp-engine.git"
+  },
+  "keywords": [
+    "cloudapp",
+    "engine",
+    "rokid"
+  ],
+  "author": "Yorkie Liu <yorkiefixer@gmail.com>",
+  "license": "Apeach",
+  "bugs": {
+    "url": "https://github.com/Rokid/cloudapp-engine/issues"
+  },
+  "homepage": "https://github.com/Rokid/cloudapp-engine#readme",
+  "dependencies": {
+    "protobufjs": "^6.8.0"
+  }
+}
