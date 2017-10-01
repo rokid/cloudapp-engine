@@ -4,7 +4,7 @@
   "description": "Rokid's CloudApp Engine which implements CloudApp Protocol",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava tests"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/Rokid/cloudapp-engine#readme",
   "dependencies": {
     "protobufjs": "^6.8.0"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0"
   }
 }
