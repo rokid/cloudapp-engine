@@ -15,18 +15,19 @@ test.cb('play simple media', (t) => {
     device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
     device_id       : process.env.ROKID_DEVICE_ID,
   });
-  client.on('media.play', (media, done) => {
+  client.on('media.play', function(media, done) {
+    this.setMedia('foobar');
     t.is(media.itemId, itemId);
     t.is(media.url, url);
-    done(null, 'foobar');
+    done();
   });
-  client.on('media.stop', (voice) => {
-    t.is(voice, 'foobar');
+  client.on('media.stop', function(media) {
+    t.is(media, 'foobar');
   });
-  client.on('exit', () => {
+  client.on('exit', function() {
     t.end();
   });
-  client.on('before event', (context) => {
+  client.on('before event', function(context) {
     if (context.event === 'Media.STARTED') {
       t.deepEqual(context.data.media, {
         itemId, url
@@ -37,7 +38,7 @@ test.cb('play simple media', (t) => {
       });
     }
   });
-  client.on('after event', (context) => {
+  client.on('after event', function(context) {
     if (context.event === 'Media.FINISHED') {
       let directives = context.data.response.action.directives;
       t.is(directives.length, 1);
@@ -80,13 +81,13 @@ test.cb('throws if no data is pass by media.play', (t) => {
     device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
     device_id       : process.env.ROKID_DEVICE_ID,
   });
-  client.on('media.play', (voice, done) => {
+  client.on('media.play', function(media, done) {
     done();
   });
-  client.on('error', (err) => {
+  client.on('error', function(err) {
     t.is(err.message, 'media instance is required when "media.play"');
   });
-  client.on('exit', () => {
+  client.on('exit', function() {
     t.end();
   });
   client.eval({

@@ -14,24 +14,25 @@ test.cb('play simple voice', (t) => {
     device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
     device_id       : process.env.ROKID_DEVICE_ID,
   });
-  client.on('voice.play', (voice, done) => {
+  client.on('voice.play', function(voice, done) {
+    this.setVoice('foobar');
     t.is(voice.tts, tts);
-    done(null, 'foobar');
+    done(null);
   });
-  client.on('voice.stop', (voice) => {
+  client.on('voice.stop', function(voice) {
     t.is(voice, 'foobar');
   });
-  client.on('exit', () => {
+  client.on('exit', function() {
     t.end();
   });
-  client.on('before event', (context) => {
+  client.on('before event', function(context) {
     if (context.event === 'Voice.STARTED') {
       t.is(context.data.voice.tts, tts);
     } else if (context.event === 'Voice.FINISHED') {
       t.is(context.data.voice.tts, tts);
     }
   });
-  client.on('after event', (context) => {
+  client.on('after event', function(context) {
     if (context.event === 'Voice.FINISHED') {
       t.is(context.data.response.action.directives.length, 1);
     }
