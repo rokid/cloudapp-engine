@@ -35,27 +35,27 @@ const client = new CloudAppEngine({
   device_id: 'your device id',
 });
 
-client.on('voice.play', (item, finish) => {
+client.on('voice.play', function(item, finish) {
   // 在这里，使用你自己的 TTS 引擎处理 `voice.play` 事件
   // tts.play(item.tts, finish)
 });
-client.on('voice.stop', (instance) => {
+client.on('voice.stop', function(instance) {
   // 同样的，这里引擎将告诉你，应该停止语音播报
   instance.stop();
 });
 
-client.on('media.play', (item, finish) => {
+client.on('media.play', function(item, finish) {
   // 这里与 voice 同理
 });
-client.on('media.stop', (instance) => {
+client.on('media.stop', function(instance) {
   // 这里与 voice 同理
 });
 
-client.on('exit', (appid) => {
+client.on('exit', function(appid) {
   // 这个事件告诉用户，需要退出某个指定 appid 的应用
 });
 
-client.on('error', (err) => {
+client.on('error', function(err) {
   // 整个交互过程中，会有不同的错误类型，这里可以判断 err.code 
   // 来作出本地的错误处理
 });
