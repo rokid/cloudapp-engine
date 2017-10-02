@@ -1,13 +1,15 @@
 # CAE: CloudApp Engine
 
-| Dependency | Build |
-|------------|-------|
-|[![Dependency Status][david-image]][david-url]|[![Build Status][travis-image]][travis-url]|
+| Dependency | Build | Coverage |
+|------------|-------|----------|
+|[![Dependency Status][david-image]][david-url]|[![Build Status][travis-image]][travis-url]|[![Coverage][coveralls-image]][coveralls-url]|
 
 [travis-image]: https://img.shields.io/travis/Rokid/cloudapp-engine.svg?style=flat-square
 [travis-url]: https://travis-ci.org/Rokid/cloudapp-engine
 [david-image]: http://img.shields.io/david/Rokid/cloudapp-engine.svg?style=flat-square
 [david-url]: https://david-dm.org/Rokid/cloudapp-engine
+[coveralls-image]: https://img.shields.io/codecov/c/github/Rokid/cloudapp-engine.svg?style=flat-square
+[coveralls-url]: https://codecov.io/github/Rokid/cloudapp-engine?branch=master
 
 CAP(Cloud App Protocol) 协议客户端引擎，该库使用纯 JavaScript 实现。
 
