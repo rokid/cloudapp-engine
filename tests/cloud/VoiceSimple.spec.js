@@ -100,62 +100,62 @@ test.cb('throws if no data is pass by voice.play', (t) => {
   });
 });
 
-// test.cb('pause voice', (t) => {
-//   const client = new CloudAppEngine({
-//     host            : process.env.EVENT_REQUEST_HOST,
-//     key             : process.env.ROKID_KEY,
-//     secret          : process.env.ROKID_SECRET,
-//     device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
-//     device_id       : process.env.ROKID_DEVICE_ID,
-//   });
-//   client.on('voice.play', (voice, done) => {
-//     setTimeout(() => done(null, 'voice'), 500);
-//   });
-//   client.on('voice.stop', (voice) => {
-//     console.log('stoped', voice);
-//   });
-//   client.on('exit', () => {
-//     t.end();
-//   });
-//   client.eval({
-//     'appId': appId,
-//     'response': {     
-//       'action': {
-//         'version': '2.0.0',
-//         'type': 'NORMAL',
-//         'form': 'cut',
-//         'shouldEndSession': true,
-//         'directives': [{
-//           'type': 'voice',
-//           'action': 'PLAY',
-//           'disableEvent': true,
-//           'item': {
-//             'tts': tts
-//           }
-//         }]
-//       }
-//     },
-//     'startWithActiveWord': false,
-//     'version': '2.0.0'
-//   });
-//   setTimeout(() => {
-//     client.eval({
-//       'appId': appId,
-//       'response': {     
-//         'action': {
-//           'version': '2.0.0',
-//           'type': 'NORMAL',
-//           'form': 'cut',
-//           'shouldEndSession': true,
-//           'directives': [{
-//             'type': 'voice',
-//             'action': 'PAUSE',
-//           }]
-//         }
-//       },
-//       'startWithActiveWord': false,
-//       'version': '2.0.0'
-//     });
-//   }, 1000);
-// });
-
+test.cb('pause voice', (t) => {
+  const client = new CloudAppEngine({
+    host            : process.env.EVENT_REQUEST_HOST,
+    key             : process.env.ROKID_KEY,
+    secret          : process.env.ROKID_SECRET,
+    device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
+    device_id       : process.env.ROKID_DEVICE_ID,
+  });
+  client.on('voice.play', function(voice, done) {
+    this.setVoice('voice');
+    setTimeout(() => done(), 2000);
+  });
+  client.on('voice.stop', function(voice) {
+    t.pass();
+  });
+  client.on('exit', function() {
+    t.end();
+  });
+  client.eval({
+    'appId': appId,
+    'response': {     
+      'action': {
+        'version': '2.0.0',
+        'type': 'NORMAL',
+        'form': 'cut',
+        'shouldEndSession': true,
+        'directives': [{
+          'type': 'voice',
+          'action': 'PLAY',
+          'disableEvent': true,
+          'item': {
+            'tts': tts
+          }
+        }]
+      }
+    },
+    'startWithActiveWord': false,
+    'version': '2.0.0'
+  });
+  setTimeout(() => {
+    client.eval({
+      'appId': appId,
+      'response': {     
+        'action': {
+          'version': '2.0.0',
+          'type': 'NORMAL',
+          'form': 'cut',
+          'shouldEndSession': true,
+          'directives': [{
+            'type': 'voice',
+            'action': 'PAUSE',
+          }]
+        }
+      },
+      'startWithActiveWord': false,
+      'version': '2.0.0'
+    });
+  }, 1000);
+});
