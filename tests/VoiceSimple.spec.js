@@ -4,6 +4,7 @@ const test = require('ava');
 const CloudAppEngine = require('../').CloudAppEngine;
 
 test.cb('play simple voice', (t) => {
+  t.plan(5);
   const appId = 'R4AB842832E84BBD8B2DD6537DAFF790';
   const tts = '晚上好，若琪为您播放晚间新闻摘要，首先我们来看看社会新闻!';
   const client = new CloudAppEngine({
@@ -22,6 +23,18 @@ test.cb('play simple voice', (t) => {
   });
   client.on('exit', () => {
     t.end();
+  });
+  client.on('before event', (context) => {
+    if (context.event === 'Voice.STARTED') {
+      t.is(context.data.voice.tts, tts);
+    } else if (context.event === 'Voice.FINISHED') {
+      t.is(context.data.voice.tts, tts);
+    }
+  });
+  client.on('after event', (context) => {
+    if (context.event === 'Voice.FINISHED') {
+      t.is(context.data.response.action.directives.length, 1);
+    }
   });
   client.eval({
     'appId': appId,
