@@ -2,10 +2,10 @@
 
 const test = require('ava');
 const CloudAppEngine = require('../../').CloudAppEngine;
+const appId = 'R4AB842832E84BBD8B2DD6537DAFF790';
 
 test.cb('play simple media', (t) => {
   t.plan(11);
-  const appId = 'R4AB842832E84BBD8B2DD6537DAFF790';
   const itemId = 'foobarId';
   const url = 'https://foobar.test';
   const client = new CloudAppEngine({
@@ -71,3 +71,42 @@ test.cb('play simple media', (t) => {
     'version': '2.0.0'
   });
 });
+
+test.cb('throws if no data is pass by media.play', (t) => {
+  const client = new CloudAppEngine({
+    host            : process.env.EVENT_REQUEST_HOST,
+    key             : process.env.ROKID_KEY,
+    secret          : process.env.ROKID_SECRET,
+    device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
+    device_id       : process.env.ROKID_DEVICE_ID,
+  });
+  client.on('media.play', (voice, done) => {
+    done();
+  });
+  client.on('error', (err) => {
+    t.is(err.message, 'media instance is required when "media.play"');
+  });
+  client.on('exit', () => {
+    t.end();
+  });
+  client.eval({
+    'appId': appId,
+    'response': {     
+      'action': {
+        'version': '2.0.0',
+        'type': 'NORMAL',
+        'form': 'cut',
+        'shouldEndSession': true,
+        'directives': [{
+          'type': 'media',
+          'action': 'PLAY',
+          'disableEvent': true,
+          'item': {}
+        }]
+      }
+    },
+    'startWithActiveWord': false,
+    'version': '2.0.0'
+  });
+});
+
