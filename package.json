@@ -4,7 +4,7 @@
   "description": "Rokid's CloudApp Engine which implements CloudApp Protocol",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=html ava tests --verbose",
+    "test": "nyc --reporter=lcov ava tests --verbose",
     "travis": "npm test && codecov",
     "client": "node ./client.js"
   },
