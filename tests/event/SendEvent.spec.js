@@ -1,7 +1,7 @@
 'use strict';
 
 const test = require('ava');
-const SendEvent = require('../lib/SendEvent');
+const SendEvent = require('../../lib/SendEvent');
 const appId = 'R4AB842832E84BBD8B2DD6537DAFF790';
 
 test('SendEvent throws if no config', (t) => {

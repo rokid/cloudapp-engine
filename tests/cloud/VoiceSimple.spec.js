@@ -1,7 +1,7 @@
 'use strict';
 
 const test = require('ava');
-const CloudAppEngine = require('../').CloudAppEngine;
+const CloudAppEngine = require('../../').CloudAppEngine;
 
 test.cb('play simple voice', (t) => {
   t.plan(5);
