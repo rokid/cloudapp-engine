@@ -1,5 +1,7 @@
 *.lock
 node_modules/
 build/
+coverage/
+.nyc_output/
 
 run-test.sh

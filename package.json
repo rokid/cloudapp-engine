@@ -4,7 +4,7 @@
   "description": "Rokid's CloudApp Engine which implements CloudApp Protocol",
   "main": "index.js",
   "scripts": {
-    "test": "ava --timeout=1m tests --verbose",
+    "test": "nyc --reporter=html ava tests --verbose",
     "client": "node ./client.js"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "protobufjs": "^6.8.0"
   },
   "devDependencies": {
-    "ava": "^0.22.0"
+    "ava": "^0.22.0",
+    "nyc": "^11.2.1"
   }
 }
