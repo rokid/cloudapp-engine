@@ -32,6 +32,19 @@ test('SendEvent throws if no config.device_type_id', (t) => {
   t.is(err.message, '"device_type_id" is required for SendEvent');
 });
 
+test('SendEvent throws if callback is not a function', (t) => {
+  const sendEvent = new SendEvent(process.env.EVENT_REQUEST_HOST, {
+    key: process.env.ROKID_KEY,
+    secret: process.env.ROKID_SECRET,
+    device_id: process.env.ROKID_DEVICE_ID,
+    device_type_id: process.env.ROKID_DEVICE_TYPE_ID
+  });
+  const err = t.throws(() => {
+    sendEvent.send(appId, 'Voice.STARTED', {});
+  }, Error);
+  t.is(err.message, 'callback must be a function');
+});
+
 test.cb('SendEvent constructor', (t) => {
   const sendEvent = new SendEvent(process.env.EVENT_REQUEST_HOST, {
     key: process.env.ROKID_KEY,
