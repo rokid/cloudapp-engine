@@ -30,5 +30,13 @@
     "ava": "^0.22.0",
     "codecov": "^2.3.0",
     "nyc": "^11.2.1"
+  },
+  "nyc": {
+    "exclude": [
+      "build",
+      "node_modules",
+      "coverage",
+      "tests/**/*.js"
+    ]
   }
 }
