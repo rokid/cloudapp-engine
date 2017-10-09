@@ -4,7 +4,6 @@ const appId = 'R4AB842832E84BBD8B2DD6537DAFF790';
 const tts = '晚上好，若琪为您播放晚间新闻摘要，首先我们来看看社会新闻!';
 
 test.cb('play session voice', (t) => {
-  t.plan(3);
   const client = new CloudAppEngine({
     host            : process.env.EVENT_REQUEST_HOST,
     key             : process.env.ROKID_KEY,
