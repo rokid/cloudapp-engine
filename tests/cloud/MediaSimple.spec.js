@@ -73,44 +73,6 @@ test.cb('play simple media', (t) => {
   });
 });
 
-test.cb('throws if no data is pass by media.play', (t) => {
-  const client = new CloudAppEngine({
-    host            : process.env.EVENT_REQUEST_HOST,
-    key             : process.env.ROKID_KEY,
-    secret          : process.env.ROKID_SECRET,
-    device_type_id  : process.env.ROKID_DEVICE_TYPE_ID,
-    device_id       : process.env.ROKID_DEVICE_ID,
-  });
-  client.on('media.play', function(media, done) {
-    done();
-  });
-  client.on('error', function(err) {
-    t.is(err.message, 'media instance is required when "media.play"');
-  });
-  client.on('exit', function() {
-    t.end();
-  });
-  client.eval({
-    'appId': appId,
-    'response': {     
-      'action': {
-        'version': '2.0.0',
-        'type': 'NORMAL',
-        'form': 'cut',
-        'shouldEndSession': true,
-        'directives': [{
-          'type': 'media',
-          'action': 'PLAY',
-          'disableEvent': true,
-          'item': {}
-        }]
-      }
-    },
-    'startWithActiveWord': false,
-    'version': '2.0.0'
-  });
-});
-
 test.cb('pause media', (t) => {
   const client = new CloudAppEngine({
     host            : process.env.EVENT_REQUEST_HOST,
